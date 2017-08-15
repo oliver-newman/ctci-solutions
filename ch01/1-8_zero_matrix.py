@@ -1,6 +1,4 @@
 def zero_matrix(matrix):
-    """
-    """
     m = len(matrix)
     n = len(matrix[0]) if m > 0 else 0
     zero_row = None
@@ -26,7 +24,7 @@ def zero_matrix(matrix):
 
     for col in range(n):
         if matrix[zero_row][col] == 0:
-            set_col_to_zero(matrix, row)
+            set_col_to_zero(matrix, col)
 
     set_row_to_zero(matrix, zero_row)
         
@@ -49,27 +47,27 @@ def test_zero_matrix():
         ),
         (
             [[0, 1], 
-            [2, 3]], 
+             [2, 3]], 
             [[0, 0],
-            [0, 3]]
+             [0, 3]]
         ),
         (
             [[6, 1, 2], 
-            [3, 0, 5], 
-            [6, 7, 8]], 
+             [3, 0, 5], 
+             [6, 7, 8]], 
             [[6, 0, 2], 
-            [0, 0, 0], 
-            [6, 0, 8]] 
+             [0, 0, 0], 
+             [6, 0, 8]] 
         ),
         (
-            [[0, 1,  2,  3],
-            [4,  5,  6,  7], 
-            [8,  9,  10, 11], 
-            [12, 13, 0, 15]], 
-            [[0, 0,  0,  0],
-            [0, 5,  0,  7],
-            [0, 9, 0,  11],
-            [0, 0, 0,  0]]
+            [[ 0,  1,  2,  3],
+             [ 4,  5,  6,  7], 
+             [ 8,  9, 10, 11], 
+             [12, 13,  0, 15]], 
+            [[0, 0, 0,  0],
+             [0, 5, 0,  7],
+             [0, 9, 0, 11],
+             [0, 0, 0,  0]]
         )
     ]
     for case, expected in test_cases:

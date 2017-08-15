@@ -63,4 +63,4 @@ def test_rotate_matrix():
     ]
     for case, expected in test_cases:
         rotate_matrix(case)
-        assert case == result
+        assert case == expected
