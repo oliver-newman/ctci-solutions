@@ -51,14 +51,14 @@ TEST_CASES = [
 
 
 def test_remove_dups():
-    for case in TEST_CASES:
-        ll = LinkedList(case[0])
+    for case, expected in TEST_CASES:
+        ll = LinkedList(case)
         remove_dups(ll)
-        assert ll == LinkedList(case[1])
+        assert ll == LinkedList(expected)
 
 
 def test_remove_dups_without_hash():
-    for case in TEST_CASES:
-        ll = LinkedList(case[0])
+    for case, expected in TEST_CASES:
+        ll = LinkedList(case)
         remove_dups_without_hash(ll)
-        assert ll == LinkedList(case[1])
+        assert ll == LinkedList(expected)

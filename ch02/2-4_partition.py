@@ -32,8 +32,8 @@ def test_partition():
         (([5,1,3], 5), [3,1,5]),
         (([5,7,3,5,3,2,4], 4), [2,3,3,5,7,5,4]),
     ]
-    for case in test_cases:
-        lst, val = case[0]
+    for case, expected in test_cases:
+        lst, val = case
         ll = LinkedList(lst)
         partition(ll, val)
-        assert ll == LinkedList(case[1])
+        assert ll == LinkedList(expected)

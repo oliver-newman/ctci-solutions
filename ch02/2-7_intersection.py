@@ -13,10 +13,6 @@ def lists_intersect(ll1, ll2):
 	
 	if curr1 is None or curr2 is None:
 		return False
-
-	
-	
-	
 	
 
 def test_lists_intersect():

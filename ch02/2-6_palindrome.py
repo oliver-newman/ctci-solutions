@@ -55,10 +55,10 @@ TEST_CASES = [
 
 
 def test_is_palindrome():
-    for case in TEST_CASES:
-        assert is_palindrome(case[0]) == case[1]
+    for case, expected in TEST_CASES:
+        assert is_palindrome(case) == expected
 
 
 def test_is_palindrome_stack():
-	for case in TEST_CASES:
-		assert is_palindrome_stack(case[0]) == case[1]
+	for case, expected in TEST_CASES:
+		assert is_palindrome_stack(case) == expected

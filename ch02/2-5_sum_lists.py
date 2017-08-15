@@ -59,10 +59,9 @@ def test_sum_lists_forward():
         (([7, 1, 6], [5, 9, 4]), [2, 1, 1, 1]),
         (([7, 1, 6], [5, 9, 2, 5]), [2, 1, 9, 5]),
     ]
-    for case in test_cases:
-        args = (LinkedList(lst) for lst in case[0])
-        res = LinkedList(case[1])
-        assert sum_lists_forward(*args) == res
+    for case, expected in test_cases:
+        args = (LinkedList(lst) for lst in case)
+        assert sum_lists_forward(*args) == LinkedList(expected)
 
 
 def test_sum_lists_backward():
@@ -75,7 +74,6 @@ def test_sum_lists_backward():
         (([6, 1, 7], [4, 9, 5]), [1, 1, 1, 2]),
         (([6, 1, 7], [5, 2, 9, 5]), [5, 9, 1, 2]),
     ]
-    for case in test_cases:
-        args = (LinkedList(lst) for lst in case[0])
-        res = LinkedList(case[1])
-        assert sum_lists_backward(*args) == res
+    for case, expected in test_cases:
+        args = (LinkedList(lst) for lst in case)
+        assert sum_lists_backward(*args) == LinkedList(expected)

@@ -34,5 +34,5 @@ def test_kth_to_last():
         (([0, 1, 2, 3, 4], 5), 0),
         (([0, 1, 2, 3, 4], 2), 3),
     ]
-    for case in test_cases:
-        assert kth_to_last(LinkedList(case[0][0]), case[0][1]) == case[1]
+    for case, expected in test_cases:
+        assert kth_to_last(LinkedList(case[0]), case[1]) == expected
