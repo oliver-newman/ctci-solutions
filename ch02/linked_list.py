@@ -11,11 +11,10 @@ class LinkedListNode:
 
 class LinkedList:
     def __init__(self, items=None):
-        curr = None
+        self.head = self.tail = None
         if items:
-            for item in reversed(items):
-                curr = LinkedListNode(item, curr)
-        self.head = curr
+            for item in items:
+                self.add_to_tail(item)
 
     def __len__(self):
         curr = self.head
@@ -43,5 +42,16 @@ class LinkedList:
 
     def __repr__(self):
         return ''.join(str(node) for node in self)
+
+    def add_to_head(self, val):
+        self.head = LinkedListNode(val, self.head)
+
+    def add_to_tail(self, val):
+        new_tail = LinkedListNode(val)
+        if self.tail:
+            self.tail.next = new_tail
+        else:
+            self.head = new_tail
+        self.tail = new_tail
 
     __str__ = __repr__

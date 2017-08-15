@@ -6,6 +6,10 @@ from linked_list import LinkedList
 
 
 def lists_intersect(ll1, ll2):
+    """
+    Time: O(m + n)
+    Space: O(1)
+    """
     len1, len2 = len(ll1), len(ll2)
     if len2 > len1:
         len1, len2 = len2, len1
