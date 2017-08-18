@@ -11,10 +11,12 @@ class LinkedListNode:
 
 class LinkedList:
     def __init__(self, items=None):
-        self.head = self.tail = None
+        self.head = None
+        curr = None
         if items:
-            for item in items:
-                self.add_to_tail(item)
+            for item in reversed(items):
+                curr = LinkedListNode(item, curr)
+        self.head = curr
 
     def __len__(self):
         curr = self.head
@@ -41,17 +43,42 @@ class LinkedList:
             curr = curr.next
 
     def __repr__(self):
-        return ''.join(str(node) for node in self)
+        """Keep track of seen nodes to avoid getting caught in loops."""
+        string = ''
+        seen = set()
+        curr = self.head
+        while curr:
+            if curr in seen:
+                string += 'loop: ' + str(curr)
+                break
+            else:
+                string += str(curr)
+                seen.add(curr)
+        return string
+
+    def get_tail(self):
+        curr = self.head
+        while curr and curr.next:
+            curr = curr.next
+        return curr
+
+    def node_at(self, index):
+        curr = self.head
+        curr_index = 0
+        while curr and curr_index < index:
+            curr = curr.next
+            curr_index += 1
+        return curr
 
     def add_to_head(self, val):
         self.head = LinkedListNode(val, self.head)
 
     def add_to_tail(self, val):
         new_tail = LinkedListNode(val)
-        if self.tail:
-            self.tail.next = new_tail
+        tail = self.get_tail()
+        if tail:
+            tail.next = new_tail
         else:
-            self.head = new_tail
-        self.tail = new_tail
+            head = new_tail
 
     __str__ = __repr__
