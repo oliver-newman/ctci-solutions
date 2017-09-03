@@ -26,23 +26,7 @@ import pytest
 from linked_list import LinkedList
 
 
-def find_loop_with_hash(ll):
-    """
-    Time: O(n), where n is the length of the list before it loops back.
-    Space: O(n)
-    """
-    seen = set()
-    curr = ll.head
-    while curr:
-        if curr in seen:
-            break
-        else:
-            seen.add(curr)
-        curr = curr.next
-    return curr
-
-
-def find_loop_without_hash(ll):
+def find_loop(ll):
     """
     Space: O(1)
     Time: O(n)
@@ -98,11 +82,6 @@ def test_cases():
     return constructed_cases
 
 
-def test_find_loop_with_hash(test_cases):
+def test_find_loop(test_cases):
     for case, expected in test_cases:
-        assert find_loop_with_hash(case) is expected
-
-
-def test_find_loop_without_hash(test_cases):
-    for case, expected in test_cases:
-        assert find_loop_without_hash(case) is expected
+        assert find_loop(case) is expected
