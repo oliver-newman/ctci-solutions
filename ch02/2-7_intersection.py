@@ -15,7 +15,7 @@ def lists_intersect(ll1, ll2):
         len1, len2 = len2, len1
         ll1, ll2 = ll2, ll1
     
-    if ll1.tail is ll2.tail is not None:
+    if ll1.get_tail() is ll2.get_tail() is not None:
         index1 = 0
         curr1, curr2 = ll1.head, ll2.head
         while len1 - index1 > len2:
@@ -43,11 +43,9 @@ def test_lists_intersect():
     # Couldn't think of a good easy way to construct many True test cases
     end = LinkedList(range(0, 10))
     ll1 = LinkedList(range(10, 20))
-    ll1.tail.next = end.head
-    ll1.tail = end.tail
+    ll1.get_tail().next = end.head
     assert lists_intersect(end, ll1) is end.head
 
     ll2 = LinkedList(range(20, 40))
-    ll2.tail.next = end.head
-    ll2.tail = end.tail
+    ll2.get_tail().next = end.head
     assert lists_intersect(ll1, ll2) is end.head
