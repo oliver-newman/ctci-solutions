@@ -6,35 +6,38 @@ elements into any other data structure (such as an array).
 import random
 
 
+class Stack(list):
+    def push(self, item):
+        self.append(item)
+
+    def peek(self):
+        return self[-1]
+
+    def is_empty(self):
+        return len(self) == 0
+
+
 def sort_stack(stack):
     # NOTE: even if len() isn't available as an operation to stack, we can
     # easily determine the length in O(n) time by popping all the elements of
     # the stack into temp_stack and back into stack, counting them as we go.
 
-    temp_stack = []
-    max_item = None
+    temp_stack = Stack()
 
-    for i in range(len(stack)):
-        while len(stack) > i:
-            curr_item = stack.pop()
+    while not stack.is_empty():
+        curr_item = stack.pop()
 
-            if (max_item is None) or (curr_item > max_item):
-                if max_item is not None:
-                    temp_stack.append(max_item)
-                max_item = curr_item
-            else:
-                temp_stack.append(curr_item)
+        while not temp_stack.is_empty() and temp_stack.peek() > curr_item:
+            stack.push(temp_stack.pop())
 
-        stack.append(max_item)
-        max_item = None
+        temp_stack.push(curr_item)
 
-        while temp_stack:
-            stack.append(temp_stack.pop())
+    while not temp_stack.is_empty():
+        stack.push(temp_stack.pop())
 
 
 def test_sort_stack():
-    stack = [random.randrange(100) - 50 for i in range(100)]
+    stack = Stack(random.randrange(100) - 50 for i in range(1000))
     solution = sorted(stack, key=lambda x: -x)
     sort_stack(stack)
     assert stack == solution
-
